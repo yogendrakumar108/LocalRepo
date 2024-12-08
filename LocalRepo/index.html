@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="./cal.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="display"value="0"/>
+        <div class="buttons">
+            
+            <div class="row">
+                <button>AC</button>
+                <button>%</button>
+                <button>DEL</button>
+                <button>/</button>
+            </div>
+            <div class="row">
+                <button>9</button>
+                <button>8</button>
+                <button>7</button>
+                <button>*</button>
+            </div>
+            <div class="row">
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>-</button>
+            </div>
+            <div class="row">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>+</button>
+            </div>
+            <div class="row">
+                <button>00</button>
+                <button>0</button>
+                <button>.</button>
+                <button id="equal">=</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let display=document.getElementById("display");
+    let buttons=document.querySelectorAll("button");
+    //console.log(buttons);
+    let result="";
+    const buttonsArray=Array.from(buttons);
+    buttonsArray.forEach((btn) =>
+    {
+        //console.log(btn);
+        
+    
+    btn.addEventListener('click',(e) =>
+    {
+      
+      if(e.target.innerHTML=="=")
+      {
+        result=eval(result);
+        display.value=result;
+      }
+      else if(e.target.innerHTML=="DEL")
+      {
+        result=result.substring(0,result.length-1)
+        display.value=result;
+      }
+      else if(e.target.innerHTML== "AC")
+      {
+       
+        display.value="";
+      }
+      else
+      {
+          result=result +e.target.innerHTML;
+          display.value=result;
+      }
+    })
+});
+</script>
+</html>
